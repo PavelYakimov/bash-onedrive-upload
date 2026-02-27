@@ -236,3 +236,45 @@ Contributors
 - [laufi](https://github.com/laufi)
 
 Thank you all for your valuable contributions.
+
+
+
+Project budget manager (Python + web UI + Google Sheets)
+-------------
+
+Теперь доступно веб-приложение на Python для ведения бюджета текущих и будущих проектов.
+
+### Запуск
+
+```bash
+python3 budget_web_app.py
+```
+
+По умолчанию приложение доступно на `http://127.0.0.1:8000` и использует SQLite базу `budget-app.db`.
+Можно переопределить:
+
+```bash
+BUDGET_APP_HOST=0.0.0.0 BUDGET_APP_PORT=8000 BUDGET_APP_DB=my-budget.db python3 budget_web_app.py
+```
+
+### Что умеет
+
+- Добавлять проекты с плановым бюджетом.
+- Добавлять расходы по каждому проекту.
+- Показывать остаток бюджета в веб-интерфейсе.
+- Импортировать данные из Google Sheets (через опубликованный CSV URL).
+- Экспортировать данные в Google Sheets через Google Apps Script Web App (JSON POST).
+- Скачать локальный CSV-экспорт (`/export.csv`).
+
+### Формат импорта/экспорта
+
+Используются колонки:
+
+- `Project`
+- `Budget`
+- `CreatedAt`
+- `ExpenseAmount`
+- `ExpenseDescription`
+- `ExpenseDate`
+
+Для импорта из Google Sheets опубликуйте лист как CSV: **File → Share → Publish to web → CSV**.
